@@ -1,0 +1,291 @@
+<head>
+    <title>transcript</title>
+    <style>
+        body {
+            margin: 18px;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+        }
+        .horizontal {
+            display: -webkit-box; /* wkhtmltopdf uses this one */
+            display: flex;
+
+            flex-direction: row;
+
+            align-items: center;
+            -webkit-box-align: center; /* WebKit */
+
+            justify-content: space-between;
+            -webkit-box-pack: justify;
+        }
+        .vertical {
+            display: -webkit-box; /* wkhtmltopdf uses this one */
+            display: flex;
+            flex-direction: column;
+            -webkit-box-orient: vertical;
+            justify-content: center;
+            -ms-flex-pack: center;
+        }
+        h1, h3 {
+            margin-bottom: 0px;
+        }
+        .title_right {
+            text-align: right;
+        }
+        .right {
+            /* margin-left: auto; */
+            width: 100%;
+            align-items: end;    
+            -webkit-box-pack: end;
+
+            justify-content: right;
+            -webkit-box-pack: right;
+        }
+        .legend {
+            text-align: right;
+            text-align: -webkit-right;
+        }
+        #logo {
+            margin-right: 12px;
+            height: 140px;
+            width: 140px;
+        }
+        p {
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+        /* Classes Table */
+
+        .classes_table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 18px;
+        }
+        .classes_table th {
+            text-align: left;
+            font-style: italic;
+        }
+
+        .classes_table thead th:nth-child(1) {
+            width: 80%;
+        }
+        .classes_table thead th:nth-child(2) {
+            width: 10%;
+            text-align: center;
+        }
+        .classes_table thead th:nth-child(3) {
+            width: 10%;
+            text-align: right;
+        }
+
+        .classes_table tbody tr:nth-child(even) {
+            background-color: #cccccc;
+        }
+
+        .classes_table th,td {
+            padding: 8px;
+            text-align: left;
+        }
+        .classes_table td:last-child {
+           text-align: right;
+        }
+
+        .classes_table td:nth-child(2) {
+            text-align: center;
+        }
+
+        /* semester name */
+        .table_header {
+            width: 100%;
+            text-align: center;
+            border: 2px solid black;
+            margin-top: 24px;
+        }
+        .year_title {
+            color: #71140b;
+            margin-top: 4px;
+            margin-bottom: 4px;
+        }
+
+        /*  credit info */
+        .credit_label {
+            width: 90%;
+            text-align: right;
+            margin-right: 12px;
+        }
+        .credit_total {
+            margin-right: 8px;
+        }
+
+        /* credits table */
+        .credits_table {
+            table-layout: fixed;
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .credits_table td, .credits_table th {
+            text-align: center;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            color: #05224d;
+            font-size: 24px;
+        }
+
+        .credits_table th {
+            border: 1px solid #05224d;
+        }
+        
+        /* signature section */
+        .signature {
+            border-bottom: 2px solid black;
+            width: 150px;
+            padding-left: 24px;
+            padding-right: 24px;
+        }
+
+        .sig_block {
+            align-items: center;
+        }
+
+        .sig_block p {
+            margin-bottom: 0px;
+        }
+
+        .sig_line {
+            align-items: flex-end;
+        }
+
+        .text_right {
+            text-align: right;
+            /* text-align: -webkit-right; */
+            /* -webkit-box-align: end; */
+            /* margin-left: auto; */
+        }
+    </style>
+</head>
+<body>
+    <!-- header at the top of the page with the logo -->
+    <div class="horizontal">
+        <div class="horizontal">
+            <img src="/Users/musab/Development/miftaah_transcripts/images/logo.jpg" id="logo" alt="logo" width="140px", height="140px">
+            <div class="vertical">
+                <h1>Miftaah Associate Program Transcript</h1> 
+                <h3>Date Issued: November 13, 2023</h2>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Legend of grading acronyms on right side -->
+    <div class="legend horizontal">
+        <div class="right">
+            <div class="vertical">
+                <p><b>IC = Incomplete</b></p>
+                <p><b>CO = Complete</b></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student info -->
+    <div class="student_info horizontal">
+        <div class="vertical">
+            <p><b>Student: {{ name }}</b></p>
+            <p>Current Grade: {{ grade }}</p>
+        </div>
+        <div class="vertical">
+            <p>Credits Earned: 18.00</p>
+            <p>Weighted GPA: 3.78/4.00</p>
+        </div>
+        <div class="vertical">
+            <p>Start Date: September 2021</p>
+            <p>Expected Graduation: August 2024</p>
+        </div>
+    </div>
+
+    <!-- Grade Table for a semester -->
+    <div class="semester">
+        <div class="table_header">
+            <h2 class="year_title">Year 1</h2>
+        </div>
+        <table class="classes_table">
+            <thead>
+                <tr>
+                    <th scope="col">Course</th>
+                    <th scope="col">Grade</th>
+                    <th scope="col">Credits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tafseer of Juzz Amma</td>
+                    <td>A-</td>
+                    <td>3.00</td>
+                </tr>
+                <tr>
+                    <td>Arabic Grammar</td>
+                    <td>A</td>
+                    <td>3.00</td>
+                </tr>
+                <tr>
+                    <td>Prophetic Traditions</td>
+                    <td>A+</td>
+                    <td>3.00</td>
+                </tr>
+                
+            </tbody>
+        </table>
+        <div class="horizontal">
+            <div class="vertical credit_label">
+                <p>Total Credits</p>
+                <p>Cumulative Credits</p>
+            </div>
+            <div class="vertical credit_total">
+                <p>9.00</p>
+                <p>9.00</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- credits info table -->
+    <table class="credits_table">
+        <thead>
+            <tr>
+                <th scope="col">Credits Required</th>
+                <th scope="col">Credits Completed</th>
+                <th scope="col">Credits Remaining</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>54.00</td>
+                <td>18.00</td>
+                <td>36.00</td>
+            </tr>
+        </tbody>
+    </table>
+        
+    <!-- Signature Section -->
+    <div class="horizontal">
+        <div class="sig_block vertical">
+            <div class="sig_line horizontal">
+                <p><b>SIGNATURE:</b></p>
+                <img class="signature" src="/Users/musab/Development/miftaah_transcripts/images/maww_sig.jpg" alt="Mufti Abdul Wahab Waheed's Signature">
+            </div>
+            
+            <p>Mufti Abdul Wahab Waheed</p>
+        </div>
+        <div class="sig_block vertical">
+            <div class="sig_line horizontal">
+                <p><b>SIGNATURE:</b></p>
+                <img class="signature" src="/Users/musab/Development/miftaah_transcripts/images/saw_sig.jpg" alt="Mufti Abdul Wahab Waheed's Signature">
+            </div>
+            
+            <p>Shaykh Abdullah Waheed</p>
+        </div>
+    </div>
+</body>
+

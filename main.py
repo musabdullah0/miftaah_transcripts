@@ -68,7 +68,7 @@ async def generate_transcript(s: Student):
         f.write(html_content)
 
     # Run the HTML to PDF conversion
-    # os.system("wkhtmltopdf  --allow /Users/musab/Development/miftaah_transcripts/images input.html result.pdf")  
+    # os.system("wkhtmltopdf --enable-local-file-access --allow /Users/musab/Development/miftaah_transcripts/images input.html result.pdf")  
     os.system("wkhtmltopdf  --allow /app/images input.html result.pdf")  
     
     # Return the PDF file as a StreamingResponse
